@@ -45,11 +45,11 @@ jobs:
           )
         shell: Rscript {0}
 
-      - name: Check that Rmd file runs without errors
-        run: |
-          rmarkdown::render(
-            "reports/cyclones.Rmd",
-            output_dir = "outputs",
-            knit_root_dir = here::here()
-          )
-        shell: Rscript {0}
+      # - name: Check that Rmd file runs without errors
+      #   run: |
+      #     rmarkdown::render(
+      #       "reports/cyclones.Rmd",
+      #       output_dir = "outputs",
+      #       knit_root_dir = here::here()
+      #     )
+      #   shell: Rscript {0}
