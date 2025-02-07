@@ -130,9 +130,67 @@ hist(
 )
 
 ## Categorising Cyclone speed data using a standard reference 
-### India Meteorological Department (IMD) Scale Vs General classification used
+### India Meteorological Department (IMD) Scale
 
+cyclones.data$speed_IMD_scale <- NA
 
+cyclones.data$speed_IMD_scale [cyclones.data$speed < 31]<-0
 
+cyclones.data$speed_IMD_scale [
+  cyclones.data$speed >=31 & cyclones.data$speed < 49]<-1
+
+cyclones.data$speed_IMD_scale [
+  cyclones.data$speed >= 49 & cyclones.data$speed < 61]<-2
+
+cyclones.data$speed_IMD_scale [cyclones.data$speed >= 61]<-3
+
+class(cyclones.data$speed_IMD_scale)
+
+cyclones.data$speed_IMD_scale <- factor(
+  cyclones.data$speed_IMD_scale,
+  labels=c(
+    "Below tropical storm strength", "Depression",
+    "Deep depression", "Cyclonic storm"
+  )
+)
+
+## Presenting Speed in Continuous and categorised formats
+
+### Histogram of continuous cyclone speed data
+
+hist(
+  cyclones.data$speed,
+  xlab = "Speed",
+  xlim = c(25,185),
+  ylab = "Number of Cyclones",
+  main = "Cyclone speed continuous data",
+  col=heat.colors(12), density=100, breaks = 50
+)
+
+### Bar chart of IMD Scale speed
+
+speed.IMD.graph <- table (cyclones.data$speed_IMD_scale)
+
+barplot (
+  speed.IMD.graph,
+  horiz = TRUE,
+  xlab = "Number of cyclones",
+  ylab = "IMD speed class",
+  main = "IMD scale classified speed of Cyclones",
+  col=heat.colors(4)
+)
+
+### Bar chart of General classification of speed
+
+speed.general.graph <- table(cyclones.data$category_name)
+
+barplot (
+  speed.general.graph,
+  horiz = TRUE,
+  xlab = "Number of cyclones",
+  ylab = "General speed class",
+  main = "General classification of speed of Cyclones",
+  col=heat.colors(4)
+)
 
 
