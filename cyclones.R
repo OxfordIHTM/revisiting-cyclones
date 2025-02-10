@@ -11,3 +11,14 @@ cyclones <- read_data(
   destfile = "data/cyclones.xlsx"
 )
 
+## Describe the structure of the data ----
+str(cyclones)
+
+## Describe data ----
+class(cyclones)
+nrow(cyclones)
+ncol(cyclones)
+names(cyclones)
+
+## Get summary statistics ----
+summary(cyclones)
