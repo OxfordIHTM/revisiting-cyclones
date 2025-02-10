@@ -11,4 +11,4 @@ cyclones <- read_data(
   destfile = "data/cyclones.xlsx"
 )
 
-View(re_cyclones)
+source("scripts/AJ_classwork.R")
