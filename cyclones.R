@@ -33,7 +33,7 @@ plot(x = cyclones$pressure, y = cyclones$speed,
                    xlab = "Pressure (hPa)", ylab = "Speed (kph)", 
                    col = "blue")
 
-### Summarize the data by year ----
+### Create a bar chart displaying duration (in hours) of storm by year ----
 nrow(cyclones[cyclones$year, ])
 
 cyclones$duration <- as.numeric(
@@ -52,3 +52,26 @@ cyclones$duration <- factor(
 )
 
 summary(cyclones$duration)
+
+cyclones$duration <- as.numeric(
+  difftime(cyclones$end,cyclones$start, units = "hours")
+)
+
+cyclones$duration 
+
+duration.graph <- table (cyclones$duration, cyclones$year)
+duration.graph
+
+barplot (
+  duration.graph, 
+  horiz = FALSE,cyclones$year %in% 2017:2021,
+  xlab = "year",
+  ylab = "duration by hours",
+  main = "Duration of Cyclones by Year"
+)
+
+cyclones[cyclones$year %in% 2017:2021, "speed"]
+
+mean(cyclones[cyclones$year == 2017:2021, "speed"], na.RM = TRUE)
+
+mean(cyclones[cyclones$year %in% 2017:2021, "speed"], na.RM = TRUE)
