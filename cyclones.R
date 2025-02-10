@@ -11,6 +11,8 @@ cyclones <- read_data(
   destfile = "data/cyclones.xlsx"
 )
 
+source("scripts/angela.R")
+
 ## Describe the structure of the data ----
 str(cyclones)
 
@@ -22,3 +24,31 @@ names(cyclones)
 
 ## Get summary statistics ----
 summary(cyclones)
+
+## In-class task: Plotting interesting things from the data ----
+
+### Create scatter plot plotting pressure against wind speed
+plot(x = cyclones$pressure, y = cyclones$speed, 
+                   main = "Cyclone Pressure vs Speed", 
+                   xlab = "Pressure (hPa)", ylab = "Speed (kph)", 
+                   col = "blue")
+
+### Summarize the data by year ----
+nrow(cyclones[cyclones$year, ])
+
+cyclones$duration <- as.numeric(
+  difftime(cyclones$end,cyclones$start, units = "days")
+)
+
+average_duration <- mean(cyclones$duration, na.rm = TRUE)
+
+cyclones$duration[cyclones$duration <= average_duration ] <- 0
+
+cyclones$duration[cyclones$duration > average_duration] <- 1
+
+cyclones$duration <- factor(
+  cyclones$duration,
+  labels = c("below average", "above average")
+)
+
+summary(cyclones$duration)
