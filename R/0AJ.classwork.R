@@ -41,12 +41,12 @@ boxplot(
   data = cyclones,
   col = "red"
 )
-
+par(mfcol = c(1,2))
 hist(
   cyclones$pressure[cyclones$speed >= 100],
   col = "lightblue",
   main = "Histogram of Cyclone Pressure",
   xlab = "Cyclone Pressure",
-  col = "purple",
   ylab = "Speed < 100"
 )
+
