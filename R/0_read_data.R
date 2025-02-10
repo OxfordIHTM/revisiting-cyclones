@@ -3,7 +3,7 @@
 read_data <- function(url, destfile) {
   download.file (url = url, destfile = destfile, mode = "wb")
   
-  read_xlsx(
+  openxlsx2::read_xlsx(
     file = destfile,
     types = c(
       year = 1, 
