@@ -3,7 +3,7 @@
 read_data <- function(url, destfile) {
   download.file (url = url, destfile = destfile, mode = "wb")
   
-  read_xlsx(
+  openxlsx2::read_xlsx(
     file = destfile,
     types = c(
       year = 1, 
@@ -18,4 +18,9 @@ read_data <- function(url, destfile) {
     )
   )
 }
+read_data(url="https://github.com/OxfordIHTM/teaching_datasets/raw/refs/heads/main/cyclones.xlsx", destfile = "data/cyclones.xlsx")
+
+summary(cyclones)
+mean(cyclones)
+nrow (cyclones)
 
