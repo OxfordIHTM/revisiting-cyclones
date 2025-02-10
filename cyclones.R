@@ -11,3 +11,5 @@ cyclones <- read_data(
   destfile = "data/cyclones.xlsx"
 )
 
+source("scripts/NM_visualisation.R")
+
