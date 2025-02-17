@@ -5,8 +5,11 @@ summary(cyclones)
 nrow(cyclones[cyclones$year == 2017,])
 cyclones_2017 = nrow(cyclones[cyclones$year == 2017,])  # not needed
 
+
 table(cyclones$year)
+
 cyclones_count = table(cyclones$year)
+
 barplot(cyclones_count, 
         main = "number of cyclones per year",
         xlab = "yaer",
@@ -27,6 +30,7 @@ plot(mean_pressure_year,
      main = "Mean Pressure Per Year", 
      xlab = "Year", 
      ylab = "Mean Pressure")
+
 barplot(mean_pressure_year$pressure,      #provides the heights of the bars (mean pressure values).
         names.arg = mean_pressure_year$year,     #labels for each bar
         main = "Mean Pressure Per Year", 
@@ -41,6 +45,7 @@ plot(mean_speed_year,
      main = "mean speed per year", 
      xlab = "year", 
      ylab = "mean speed")
+
 barplot(mean_speed_year$speed, 
         names.arg = mean_speed_year$speed,
         main = "mean speer per year",
@@ -75,6 +80,7 @@ plot(LOS_name_secs$Typhoons_LOS_secs,
        main = "LOS by typhoon", 
        xlab = "typhoon name",
        ylab = "LOS")
+
 plot(LOS_name_hrs$Typhoons_LOS_hrs, 
      main = "LOS by typhoon", 
      xlab = "typhoon name",
